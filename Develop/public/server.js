@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+//app.use(express.urlencoded({ extended: true }));
+//add.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 5500;
 app.use(express.json());
  // git the home page
