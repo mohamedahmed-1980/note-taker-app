@@ -6,6 +6,12 @@ const app = express();
 //add.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 5500;
 app.use(express.json());
+
+console.log({app})
+
+app.use('/assets', express.static(path.join(__dirname, 'assets')))
+
+
  // git the home page
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,"index.html"))
