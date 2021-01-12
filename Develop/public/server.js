@@ -14,6 +14,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')))
 
  // git the home page
 app.get('/',(req,res) => {
+  console.log('calling home')
     res.sendFile(path.join(__dirname,"index.html"))
 })
 // git the notes page
