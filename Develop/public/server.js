@@ -4,10 +4,10 @@ const path = require('path');
 const app = express();
 //app.use(express.urlencoded({ extended: true }));
 //add.use(express.static(path.join(__dirname, "public")));
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
-console.log({app})
+
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')))
 
@@ -35,18 +35,20 @@ app.get('/notes',(req,res) => {
     //add it to the db.json file, and then return the new note to the client.
      
 app.post('/api/notes',(req,res)=>{
-  const note = req.body
+  let note = req.body
+  console.log(note)
   fs.readFile(path.join(__dirname,"../db/db.json"),"utf8",(err,data) => {
     if (err) console.log(err)
   // create id for each note.
     const notesArray = JSON.parse(data)
     note.id = notesArray[notesArray.length-1].id + 1;
+    console.log(note)
     notesArray.push(note);
 
     fs.writeFile(path.join(__dirname,"../db/db.json"), JSON.stringify(notesArray) , (err) =>  {
       if(err) res.send(err);
 
-      res.send(note);
+      res.json(note);
 
     })
   })
