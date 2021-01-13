@@ -2,8 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-//app.use(express.urlencoded({ extended: true }));
-//add.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
